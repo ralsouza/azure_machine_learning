@@ -6,10 +6,8 @@
 # https://support.rstudio.com/hc/en-us/articles/200532197-Character-Encoding
 
 # Configurando o diretório de trabalho
-# Coloque entre aspas o diretório de trabalho que você está usando no seu computador
-# Não use diretórios com espaço no nome
-# setwd("C:/FCD/BigDataRAzure/Cap13")
-# getwd()
+# OS X
+setwd('/Users/ls_rafael/Documents/GitHub/azure_machine_learning')
 
 set.asPOSIXct <- function(inFrame) { 
   dteday <- as.POSIXct(
