@@ -24,7 +24,7 @@ if(Azure){
   ratings <- read.csv("datasets/Restaurant-ratings.csv", sep = ",", header = T, stringsAsFactors = F)
 }
 
-# Filtrando o dataset restaurantes
+# Filtrando o dataset restaurantes com base em regras
 restaurantes <- restaurantes[restaurantes$franchise == 'f' & restaurantes$alcohol != 'No_Alcohol_Served', ]
 
 require(dplyr)
