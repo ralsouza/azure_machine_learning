@@ -1,12 +1,9 @@
 # Solução Lista de Exercícios - Capítulo 13
 
-# Obs: Caso tenha problemas com a acentuação, consulte este link:
-# https://support.rstudio.com/hc/en-us/articles/200532197-Character-Encoding
 
-# Configurando o diretório de trabalho
-# Coloque entre aspas o diretório de trabalho que você está usando no seu computador
-# Não use diretórios com espaço no nome
-setwd("C:/FCD/BigDataRAzure/Cap14")
+# Configuração do diretório de trabalho
+# OS X
+setwd("/Users/ls_rafael/Documents/GitHub/azure_machine_learning")
 getwd()
 
 # Para este script, vamos usar o mlbench (Machine Learning Benchmark Problems)
