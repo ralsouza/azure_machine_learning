@@ -1,5 +1,4 @@
-# Solução Lista de Exercícios - Capítulo 13
-
+# Lista de Exercícios 1 - Capítulo 13
 
 # Configuração do diretório de trabalho
 # OS X
