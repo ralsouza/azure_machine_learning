@@ -7,7 +7,7 @@
 # Configurando o diretório de trabalho
 # OS X
 setwd('/Users/ls_rafael/Documents/GitHub/azure_machine_learning')
-
+getwd()
 
 # Variável que controla a execução do script
 Azure <- FALSE
