@@ -37,7 +37,7 @@ title(main = "Democrat votes cast for issue 1", xlab = "vote", ylab = "# reps")
 
 # Funções usadas para imputation
 # Função que retorna o numeros de NA's por voto e classe (democrat or republican)
-na_by_col_class <- function (col,cls){return(sum(is.na(HouseVotes84[,col]) & HouseVotes84$Class==cls))}
+na_by_col_class <- function (col,cls){return(sum(is.na(HouseVotes84[ ,col]) & HouseVotes84$Class==cls))}
 
 p_y_col_class <- function(col,cls){
   sum_y <- sum(HouseVotes84[,col] == 'y' & HouseVotes84$Class == cls, na.rm = TRUE)
@@ -72,8 +72,13 @@ install.packages("e1071")
 library(e1071)
 
 # Exercício 1 - Crie o modelo NaiveBayes e faça as previsões
-
 # Treine o modelo
 ?naiveBayes
 
+model_nb <- naiveBayes(Class ~., data = trainHouseVotes84)
+# democrat   republican 
+# 0.6197183  0.3802817 
+
+# Predição
+predict(model_nb,)
 
