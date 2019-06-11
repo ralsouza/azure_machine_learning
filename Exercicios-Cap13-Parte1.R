@@ -79,6 +79,29 @@ model_nb <- naiveBayes(Class ~., data = trainHouseVotes84)
 # democrat   republican 
 # 0.6197183  0.3802817 
 
-# Predição
-predict(model_nb,)
+# Visualização do Resultado
+model_nb
+str(model_nb)
+summary(model_nb)
 
+
+# Predição
+pred_hv84 <- predict(model_nb, testHouseVotes84[ ,-1])
+
+summary(pred_hv84)
+# democrat republican 
+#       44         36
+
+# Confusion Matrix (Tabela de Comparação)
+table(Preditos = pred_hv84, Observados = testHouseVotes84$Class)
+
+##################################
+#              Observados
+# Preditos     democrat republican
+#   democrat         42          2
+#   republican        5         31
+##################################
+# Avaliação do Desempenho
+mean(pred_hv84 == testHouseVotes84$Class) # 91,25% de precisão
+
+# CONTINUAR NO FINAL DO SCRIPT PARA O PROCESSO AUTOMÁTICO DE VÁRIAS PREDIÇÕES.
