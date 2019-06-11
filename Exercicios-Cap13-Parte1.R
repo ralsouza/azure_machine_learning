@@ -15,17 +15,23 @@ getwd()
 # Import
 install.packages("mlbench")
 library(mlbench)
+?mlbench
 
 # Carregando o dataset
 ?HouseVotes84
 data("HouseVotes84")
 View(HouseVotes84)
+head(HouseVotes84)
+summary(HouseVotes84)
+str(HouseVotes84)
 
 # Analise exploratória de dados
-plot(as.factor(HouseVotes84[,2]))
+plot(as.factor(HouseVotes84[ ,2]))
 title(main = "Votes cast for issue", xlab = "vote", ylab = "# reps")
+
 plot(as.factor(HouseVotes84[HouseVotes84$Class == 'republican', 2]))
 title(main = "Republican votes cast for issue 1", xlab = "vote", ylab = "# reps")
+
 plot(as.factor(HouseVotes84[HouseVotes84$Class == 'democrat',2]))
 title(main = "Democrat votes cast for issue 1", xlab = "vote", ylab = "# reps")
 
