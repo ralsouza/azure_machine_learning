@@ -71,7 +71,7 @@ testHouseVotes84 <- HouseVotes84[HouseVotes84$train == 0, -trainColNum]
 install.packages("e1071")
 library(e1071)
 
-# Exercício 1 - Crie o modelo NaiveBayes e faça as previsões
+# Exercício 1 - Crie o modelo Naive Bayes e faça as previsões
 # Treine o modelo
 ?naiveBayes
 
@@ -83,7 +83,6 @@ model_nb <- naiveBayes(Class ~., data = trainHouseVotes84)
 model_nb
 str(model_nb)
 summary(model_nb)
-
 
 # Predição
 pred_hv84 <- predict(model_nb, testHouseVotes84[ ,-1])
@@ -101,7 +100,58 @@ table(Preditos = pred_hv84, Observados = testHouseVotes84$Class)
 #   democrat         42          2
 #   republican        5         31
 ##################################
-# Avaliação do Desempenho
+
+# Avaliação do Desempenho do Naive Bayes
 mean(pred_hv84 == testHouseVotes84$Class) # 91,25% de precisão
 
-# CONTINUAR NO FINAL DO SCRIPT PARA O PROCESSO AUTOMÁTICO DE VÁRIAS PREDIÇÕES.
+# Função para executar e registrar todos os resultados do modelo
+hb_multiple_runs <- function(train_fraction, n){
+  
+  fraction_correct <- rep(NA, n)
+  
+  for(i in 1:n){
+    
+    HouseVotes84[ ,'train'] <- ifelse(runif(nrow(HouseVotes84)) < train_fraction, 1, 0)
+    
+    trainColNum <- grep('train', names(HouseVotes84))
+    
+    trainHouseVotes84 <- HouseVotes84[HouseVotes84$train == 1, -trainColNum]
+    testHouseVotes84  <- HouseVotes84[HouseVotes84$train == 0, -trainColNum]
+    
+    model_nb <- naiveBayes(Class ~., data = trainHouseVotes84)
+    
+    pred_hv84 <- predict(model_nb, testHouseVotes84[ ,-1])
+    
+    fraction_correct[i] <- mean(pred_hv84 == testHouseVotes84$Class)
+  }
+  return(fraction_correct)
+}
+
+# Executar o Modelo 20 vezes e 80% para massa de treino
+fraction_correct_predictions <- hb_multiple_runs(0.8, 20)
+fraction_correct_predictions
+
+# Resumo dos Resultados 
+summary(fraction_correct_predictions)
+
+# Desvio Padrão
+sd(fraction_correct_predictions)
+
+# Conclusão
+# Os resultados estão das execuções estão bem próximos, entre 88% e 95%
+# e desvio padrão de 2%
+# Logo o Naive Bayes fez um bom trabalho de predição.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
