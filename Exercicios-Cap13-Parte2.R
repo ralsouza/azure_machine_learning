@@ -13,9 +13,9 @@ getwd()
 
 # https://www.kaggle.com/c/titanic/data
 
-
 # Comecamos carregando o dataset de dados_treino
 dados_treino <- read.csv('datasets/titanic-train.csv')
+dados_teste <- read.csv('datasets/titanic-train.csv')
 View(dados_treino)
 
 # Analise exploratória de dados
@@ -82,8 +82,11 @@ missmap(dados_treino,
         col = c("yellow", "black"), 
         legend = FALSE)
 
-
 # Exercício 1 - Crie o modelo de classificação e faça as previsões
 
+# Invocando o método Naive Bayes
+# install.packages("e1071")
+library(e1071)
 
+# Usar Naive Bayes
 
