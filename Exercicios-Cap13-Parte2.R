@@ -17,6 +17,23 @@ getwd()
 dados_treino <- read.csv('datasets/titanic-train.csv')
 dados_teste <- read.csv('datasets/titanic-train.csv')
 View(dados_treino)
+View(dados_teste)
+
+# Remover colunas de id e nome
+dados_teste$PassengerId <- NULL
+dados_treino$PassengerId <- NULL
+
+dados_teste$Name <- NULL
+dados_treino$Name <- NULL
+
+dados_teste$Ticket <- NULL
+dados_treino$Ticket <- NULL
+
+dados_teste$Embarked <- NULL
+dados_treino$Embarked <- NULL
+
+dados_teste$Cabin <- NULL
+dados_treino$Cabin <- NULL
 
 # Analise exploratória de dados
 # Vamos usar o pacote Amelia e suas funções para definir o volume de dados Missing
@@ -89,6 +106,8 @@ missmap(dados_treino,
 library(e1071)
 
 # Usar Naive Bayes
+
+# Treino do modelo
 
 
 
