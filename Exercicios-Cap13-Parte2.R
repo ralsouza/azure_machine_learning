@@ -15,7 +15,7 @@ getwd()
 
 # Comecamos carregando o dataset de dados_treino
 dados_treino <- read.csv('datasets/titanic-train.csv')
-dados_teste <- read.csv('datasets/titanic-train.csv')
+dados_teste <- read.csv('datasets/titanic-test.csv')
 View(dados_treino)
 View(dados_teste)
 
@@ -34,6 +34,9 @@ dados_treino$Embarked <- NULL
 
 dados_teste$Cabin <- NULL
 dados_treino$Cabin <- NULL
+
+# Remoção da variável de survived do dataset de teste, pois isso que queremos predizer
+dados_teste$Survived <- NULL
 
 # Analise exploratória de dados
 # Vamos usar o pacote Amelia e suas funções para definir o volume de dados Missing
@@ -90,8 +93,12 @@ impute_age <- function(age, class){
   return(out)
 }
 
-fixed.ages <- impute_age(dados_treino$Age, dados_treino$Pclass)
-dados_treino$Age <- fixed.ages
+fixed.ages_treino <- impute_age(dados_treino$Age, dados_treino$Pclass)
+fixed.ages_teste  <- impute_age(dados_teste$Age, dados_teste$Pclass)
+
+
+dados_treino$Age <- fixed.ages_treino
+dados_teste$Age <- fixed.ages_teste
 
 # Visualizando o mapa de valores missing (nao existem mais dados missing)
 missmap(dados_treino, 
@@ -105,10 +112,20 @@ missmap(dados_treino,
 # install.packages("e1071")
 library(e1071)
 
-# Usar Naive Bayes
-
 # Treino do modelo
+# A variável Surived é 0 e 1, o NB calcula variáveis categórias, 
+# portanto, é necessário usar Survived como Factor.
+# Uma ideia interessante seria alterar o 0 e 1 para Sobrevive/Não Sobrevive, 
+# respetivivamente durante o pré-processamento.
+nb_model_v1 <- naiveBayes(as.factor(Survived) ~., data = dados_treino)
 
+nb_model_v1
+summary(nb_model_v1)
+str(nb_model_v1)
 
+# Predição com os dados de teste, a variável Survived foi removida no pré-processamento
+pred_nb_v1 <- predict(nb_model_v1, dados_teste)
+
+summary(pred_nb_v1)
 
 
