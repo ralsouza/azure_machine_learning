@@ -16,6 +16,7 @@ getwd()
 # Comecamos carregando o dataset de dados_treino
 dados_treino <- read.csv('datasets/titanic-train.csv')
 dados_teste <- read.csv('datasets/titanic-test.csv')
+dados_teste_perf <- read.csv('datasets/titanic-test.csv')
 View(dados_treino)
 View(dados_teste)
 
@@ -124,8 +125,12 @@ summary(nb_model_v1)
 str(nb_model_v1)
 
 # Predição com os dados de teste, a variável Survived foi removida no pré-processamento
-pred_nb_v1 <- predict(nb_model_v1, dados_teste)
+pred_nb_v1 <- predict(nb_model_v1, dados_teste, type="response")
 
 summary(pred_nb_v1)
+
+# Avaliação do Desempenho
+table(pred_nb_v1,dados_teste_perf$Survived)
+
 
 
