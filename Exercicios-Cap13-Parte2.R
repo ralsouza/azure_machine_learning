@@ -109,28 +109,8 @@ missmap(dados_treino,
 
 # Exercício 1 - Crie o modelo de classificação e faça as previsões
 
-# Invocando o método Naive Bayes
-# install.packages("e1071")
-library(e1071)
-
-# Treino do modelo
-# A variável Surived é 0 e 1, o NB calcula variáveis categórias, 
-# portanto, é necessário usar Survived como Factor.
-# Uma ideia interessante seria alterar o 0 e 1 para Sobrevive/Não Sobrevive, 
-# respetivivamente durante o pré-processamento.
-nb_model_v1 <- naiveBayes(as.factor(Survived) ~., data = dados_treino)
-
-nb_model_v1
-summary(nb_model_v1)
-str(nb_model_v1)
-
-# Predição com os dados de teste, a variável Survived foi removida no pré-processamento
-pred_nb_v1 <- predict(nb_model_v1, dados_teste, type="response")
-
-summary(pred_nb_v1)
-
-# Avaliação do Desempenho
-table(pred_nb_v1,dados_teste_perf$Survived)
+# Invocando o método de Regressão Logística
+install.packages('ISLR')
 
 
 
