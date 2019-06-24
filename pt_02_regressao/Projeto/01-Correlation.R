@@ -6,13 +6,9 @@
 # Para executar no Azure, altere o valor da variavel Azure para TRUE. 
 # Se o valor for FALSE, o codigo será executado no RStudio
 
-# Obs: Caso tenha problemas com a acentuação, consulte este link:
-# https://support.rstudio.com/hc/en-us/articles/200532197-Character-Encoding
-
-# Configurando o diretório de trabalho
-# Coloque entre aspas o diretório de trabalho que você está usando no seu computador
-# Não use diretórios com espaço no nome
-# setwd("C:/FCD/BigDataRAzure/Cap14/Projeto")
+# Diretório de trabalho
+# OSX
+# setwd('/Users/ls_rafael/Documents/GitHub/azure_machine_learning/pt_02_regressao/Projeto')
 # getwd()
 
 # Variável que controla a execução do script
