@@ -9,8 +9,8 @@
 # Configurando o diretório de trabalho
 # Coloque entre aspas o diretório de trabalho que você está usando no seu computador
 # Não use diretórios com espaço no nome
-# setwd("C:/FCD/BigDataRAzure/Cap13")
-# getwd()
+setwd("/home/ralsouza/Documents/r_projects/azure_machine_learning/")
+getwd()
 
 # Variável que controla a execução do script
 Azure <- FALSE
@@ -37,3 +37,4 @@ ggplot(Bikes, aes(x = dteday, y = cnt)) +
   ggtitle("Demanda por Bikes as 09:00") +
   theme(text = element_text(size = 20))
 
+list.dirs()

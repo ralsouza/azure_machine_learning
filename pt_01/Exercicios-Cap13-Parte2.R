@@ -5,6 +5,9 @@
 setwd("/Users/ls_rafael/Documents/GitHub/azure_machine_learning")
 getwd()
 
+# Ubuntu
+setwd('/home/ralsouza/Documents/r_projects/azure_machine_learning')
+getwd()
 # Para este exemplo, usaremos o dataset Titanic do Kaggle. 
 # Este dataset é famoso e usamos parte dele nas aulas de SQL.
 # Ele normalmente é usado por aqueles que estão começando em Machine Learning.
@@ -16,28 +19,25 @@ getwd()
 # Comecamos carregando o dataset de dados_treino
 dados_treino <- read.csv('datasets/titanic-train.csv')
 dados_teste <- read.csv('datasets/titanic-test.csv')
-dados_teste_perf <- read.csv('datasets/titanic-test.csv')
 View(dados_treino)
 View(dados_teste)
 
-# Remover colunas de id e nome
-dados_teste$PassengerId <- NULL
-dados_treino$PassengerId <- NULL
+head(dados_treino)
+summary(dados_treino)
+str(dados_treino)
 
-dados_teste$Name <- NULL
-dados_treino$Name <- NULL
+head(dados_teste)
+summary(dados_teste)
+str(dados_teste)
 
-dados_teste$Ticket <- NULL
-dados_treino$Ticket <- NULL
+# Seleção das variáveis necessárias
+install.packages('dplyr')
+library(dplyr)
 
-dados_teste$Embarked <- NULL
-dados_treino$Embarked <- NULL
+cln_dados_treino <- select(dados_treino, -PassengerId, Survived, Pclass, -Name, Sex, Age, SibSp, Parch, -Ticket, Fare, -Cabin, -Embarked)
+cln_dados_treino
 
-dados_teste$Cabin <- NULL
-dados_treino$Cabin <- NULL
 
-# Remoção da variável de survived do dataset de teste, pois isso que queremos predizer
-dados_teste$Survived <- NULL
 
 # Analise exploratória de dados
 # Vamos usar o pacote Amelia e suas funções para definir o volume de dados Missing
