@@ -22,7 +22,7 @@ if(Azure){
   bikes$dteday <- set.asPOSIXct(bikes)
 }else{
   source("src/Tools.R")
-  bikes <- read.csv("bikes.csv", sep = ",", header = TRUE, stringsAsFactors = FALSE )
+  bikes <- read.csv("datasets/bikes.csv", sep = ",", header = TRUE, stringsAsFactors = FALSE )
   
   # Selecionar as variáveis que serão usadas
   cols <- c("dteday", "mnth", "hr", "holiday",
@@ -57,7 +57,6 @@ bikes <- month.count(bikes)
 # Criar um fator ordenado para o dia da semana, comecando por segunda-feira
 # Neste fator eh convertido para ordenado numérico para ser compativel com os tipos de dados do Azure ML
 bikes$dayWeek <- as.factor(weekdays(bikes$dteday))
-
 
 ############ ATENÇÃO ############
 
