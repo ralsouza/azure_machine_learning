@@ -29,7 +29,7 @@ if(Azure){
 
 # Visualizando o relacionamento entre as variáveis preditoras e demanda por bike
 labels <- c("Demanda de Bikes vs Temperatura",
-            "Demanda de Bikes vs Humidade",
+            "Demanda de Bikes vs Umidade",
             "Demanda de Bikes vs Velocidade do Vento",
             "Demanda de Bikes vs Hora")
 
