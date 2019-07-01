@@ -30,14 +30,17 @@ dim(bikes)
 any(is.na(bikes))
 
 # Criando um modelo para identificar os atributos com maior importância para o modelo preditivo
+# install.packages('randomForest')
 require(randomForest)
 
-# Avalidando a importância de todas as variaveis
+# Avalidando a importância de todas as variaveis 
+# Criar um modelo preditivo para ajudar quais são as variáveis mais relevantes
+# Importante como ponto de partida, principalmente em dataset muito grandes
 modelo <- randomForest(cnt ~ . , 
                        data = bikes, 
                        ntree = 100, 
                        nodesize = 10,
-                       importance = TRUE)
+                       importance = TRUE) # Identificar as variáveis mais importantes
 
 # Removendo variáveis colineares
 modelo <- randomForest(cnt ~ . - mnth
