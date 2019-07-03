@@ -29,7 +29,7 @@ if(Azure){
   Credit <- equ.Frame(Credit, 2)
 }
 
-# Transformando variáveis numéricas em variáveis categóricas
+# Transformando variáveis numéricas em novas variáveis categóricas, não anterando as originais
 toFactors <- c("Duration", "CreditAmount", "Age")
 maxVals <- c(100, 1000000, 100)
 facNames <- unlist(lapply(toFactors, function(x) paste(x, "_f", sep = "")))
