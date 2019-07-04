@@ -19,7 +19,7 @@ quantize.num <- function(x, nlevs = 5, maxval = 1000,
   x <- cut(x, breaks = cuts, order_result = ordered)
 }
 
-# ?cut
+# ?cut - Converte números para tipo fator
 
 # Nomeando as variáveis
 colNames <- c("CheckingAcctStat",

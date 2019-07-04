@@ -10,7 +10,7 @@
 # Configurando o diretório de trabalho
 # Coloque entre aspas o diretório de trabalho que você está usando no seu computador
 # Não use diretórios com espaço no nome
-# setwd("C:/FCD/BigDataRAzure/Cap15/Projeto")
+# setwd('/Users/ls_rafael/Documents/GitHub/azure_machine_learning/pt_03_classificacao')
 # getwd()
 
 # Variável que controla a execução do script
@@ -24,12 +24,12 @@ if(Azure){
   Credit <- read.csv("credito.csv", header = F, stringsAsFactors = F )
   metaFrame <- data.frame(colNames, isOrdered, I(factOrder))
   Credit <- fact.set(Credit, metaFrame)
-  
   # Balancear o número de casos positivos e negativos
   Credit <- equ.Frame(Credit, 2)
 }
 
-# Transformando variáveis numéricas em novas variáveis categóricas, não anterando as originais
+# Transformando variáveis numéricas em novas variáveis categóricas com sufixo [nome variávei]_f de Feature Engineering, 
+# não alterando as originais
 toFactors <- c("Duration", "CreditAmount", "Age")
 maxVals <- c(100, 1000000, 100)
 facNames <- unlist(lapply(toFactors, function(x) paste(x, "_f", sep = "")))
